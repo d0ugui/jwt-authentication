@@ -1,0 +1,9 @@
+services:
+  authentication-e2e:
+    image: bitnami/postgresql
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRESQL_USERNAME=root
+      - POSTGRESQL_PASSWORD=root
+      - POSTGRESQL_DATABASE=auth-e2e
