@@ -34,7 +34,7 @@ export class SignUpController implements IController {
         return {
           statusCode: 409,
           body: {
-            error: "Account already exists",
+            error: "This email is already in use",
           },
         };
       }
