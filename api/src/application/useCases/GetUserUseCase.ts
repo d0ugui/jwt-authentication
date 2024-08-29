@@ -20,6 +20,7 @@ export class GetUserUseCase {
       email: account.email,
       name: account.name,
       id: account.id,
+      role: account.role,
     };
   }
 }

@@ -1,7 +1,8 @@
 import { z } from "zod";
-import { IController, IRequest, IResponse } from "../interfaces/IController";
+import { IController, IResponse } from "../interfaces/IController";
 import { SignUpUseCase } from "../useCases/SignUpUseCase";
 import { AccountAlreadyExists } from "../errors/AccountAlreadyExists";
+import { IRequest } from "../interfaces/IRequest";
 
 const schema = z.object({
   name: z.string().min(2),

@@ -1,11 +1,7 @@
-import { verify } from "jsonwebtoken";
-import {
-  IData,
-  IMiddleware,
-  IRequest,
-  IResponse,
-} from "../interfaces/IMiddleware";
+import { JwtPayload, verify } from "jsonwebtoken";
+import { IData, IMiddleware, IResponse } from "../interfaces/IMiddleware";
 import { env } from "../config/env";
+import { IRequest } from "../interfaces/IRequest";
 
 export class AuthenticationMiddleware implements IMiddleware {
   async handle({ headers }: IRequest): Promise<IResponse | IData> {
@@ -27,11 +23,14 @@ export class AuthenticationMiddleware implements IMiddleware {
         throw new Error();
       }
 
-      const payload = verify(token, env.jwtSecret);
+      const payload = verify(token, env.jwtSecret) as JwtPayload;
 
       return {
         data: {
-          accountId: payload.sub,
+          account: {
+            id: payload.sub,
+            role: payload.role,
+          },
         },
       };
     } catch {

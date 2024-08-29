@@ -1,22 +1,23 @@
 import { z } from "zod";
-import { IController, IRequest, IResponse } from "../interfaces/IController";
+import { IController, IResponse } from "../interfaces/IController";
 import { GetUserUseCase } from "../useCases/GetUserUseCase";
 import { AccountNotFound } from "../errors/AccountNotFound";
+import { IRequest } from "../interfaces/IRequest";
 
 const schema = z.string();
 
 export class GetUserController implements IController {
   constructor(private readonly getUserUseCase: GetUserUseCase) {}
 
-  async handle({ accountId }: IRequest): Promise<IResponse> {
+  async handle({ account }: IRequest): Promise<IResponse> {
     try {
-      const id = schema.parse(accountId);
+      const id = schema.parse(account?.id);
 
-      const account = await this.getUserUseCase.execute({ accountId: id });
+      const userAccount = await this.getUserUseCase.execute({ accountId: id });
 
       return {
         statusCode: 200,
-        body: account,
+        body: userAccount,
       };
     } catch (error) {
       if (error instanceof z.ZodError) {
