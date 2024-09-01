@@ -1,31 +1,30 @@
 import { z } from "zod";
 import { IController, IResponse } from "../interfaces/IController";
-import { SignInUseCase } from "../useCases/SignInUseCase";
-import { InvalidCredentials } from "../errors/InvalidCredentials";
 import { IRequest } from "../interfaces/IRequest";
+import { RefreshTokenUseCase } from "../useCases/RefreshTokenUseCase";
+import { InvalidCredentials } from "../errors/InvalidCredentials";
 
 const schema = z.object({
-  email: z.string().email(),
-  password: z.string().min(8),
+  refreshToken: z.string(),
 });
 
-export class SignInController implements IController {
-  constructor(private readonly signInUseCase: SignInUseCase) {}
+export class RefreshTokenController implements IController {
+  constructor(private readonly refreshTokenUseCase: RefreshTokenUseCase) {}
 
   async handle({ body }: IRequest): Promise<IResponse> {
     try {
-      const { email, password } = schema.parse(body);
+      const { refreshToken } = schema.parse(body);
 
-      const { accessToken, refreshToken } = await this.signInUseCase.execute({
-        email,
-        password,
-      });
+      const { accessToken, refreshToken: newRefreshToken } =
+        await this.refreshTokenUseCase.execute({
+          refreshToken,
+        });
 
       return {
         statusCode: 200,
         body: {
           accessToken,
-          refreshToken,
+          refreshToken: newRefreshToken,
         },
       };
     } catch (error) {

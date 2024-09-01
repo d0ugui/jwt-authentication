@@ -8,6 +8,7 @@ import { makeSignInController } from "../factories/makeSignInController";
 import { makeAuthenticationMiddleware } from "../factories/makeAuthenticationMiddleware";
 import { makeGetUserController } from "../factories/makeGetUserController";
 import { makeAuthorizationMiddleware } from "../factories/makeAuthorizationMiddleware";
+import { makeRefreshTokenController } from "../factories/makeRefreshTokenController";
 
 const app = express();
 
@@ -21,6 +22,8 @@ app.get(
   middlewareAdapter(makeAuthenticationMiddleware()),
   routeAdapter(makeGetUserController())
 );
+
+app.post("/refresh", routeAdapter(makeRefreshTokenController()));
 
 app.post(
   "/leads",

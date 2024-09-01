@@ -10,6 +10,7 @@ interface IInput {
 }
 interface IOutput {
   accessToken: string;
+  refreshToken: string;
 }
 
 export class SignInUseCase {
@@ -31,13 +32,18 @@ export class SignInUseCase {
     const accessToken = sign(
       { sub: account.id, role: account.role },
       env.jwtSecret,
-      {
-        expiresIn: "1d",
-      }
+      { expiresIn: "10s" }
+    );
+
+    const refreshToken = sign(
+      { sub: account.id, role: account.role },
+      env.refreshSecret,
+      { expiresIn: "1h" }
     );
 
     return {
       accessToken,
+      refreshToken,
     };
   }
 }
