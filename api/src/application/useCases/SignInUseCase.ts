@@ -41,6 +41,13 @@ export class SignInUseCase {
       { expiresIn: "1h" }
     );
 
+    await prismaClient.refreshToken.create({
+      data: {
+        accountId: account.id,
+        token: refreshToken,
+      },
+    });
+
     return {
       accessToken,
       refreshToken,

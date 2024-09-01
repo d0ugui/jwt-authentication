@@ -21,5 +21,18 @@ model Account {
   password String
   role     Role
 
+  RefreshTokens RefreshToken[]
+
   @@map("accounts")
+}
+
+model RefreshToken {
+  id        String @id @default(uuid()) @db.Uuid
+  accountId String @db.Uuid
+  token     String
+
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+  @@map("refresh_tokens")
 }
