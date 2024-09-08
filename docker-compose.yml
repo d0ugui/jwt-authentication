@@ -1,5 +1,6 @@
 services:
   authentication-e2e:
+    container-name: authentication-e2e
     image: bitnami/postgresql
     ports:
       - 5432:5432
