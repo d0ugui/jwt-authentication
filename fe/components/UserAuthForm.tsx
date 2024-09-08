@@ -1,7 +1,7 @@
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
-import { login } from "@/app/actions/auth";
+import { signin } from "@/app/actions/sign-in";
 
 export function UserAuthForm() {
   return (
@@ -9,7 +9,7 @@ export function UserAuthForm() {
       className="flex flex-col gap-4"
       action={async (formData) => {
         "use server";
-        await login(formData);
+        await signin(formData);
       }}
     >
       <Label className="sr-only" htmlFor="email">

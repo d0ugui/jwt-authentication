@@ -1,10 +1,18 @@
+import { redirect } from "next/navigation";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 
 export function UserSignUpForm() {
   return (
-    <div className="flex flex-col gap-4">
+    <form
+      className="flex flex-col gap-4"
+      action={async () => {
+        "use server";
+        // await logout();
+        redirect("/");
+      }}
+    >
       <Label className="sr-only" htmlFor="email">
         Email
       </Label>
@@ -30,6 +38,6 @@ export function UserSignUpForm() {
       />
 
       <Button>Sign up</Button>
-    </div>
+    </form>
   );
 }

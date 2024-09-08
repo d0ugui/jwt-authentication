@@ -1,4 +1,4 @@
-import { getSession } from "../actions/auth";
+import { getSession } from "../actions/get-session";
 
 export default async function Dashboard() {
   const session = await getSession();
