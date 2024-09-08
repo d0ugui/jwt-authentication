@@ -2,8 +2,6 @@
 
 This API is built with TypeScript, Express, Prisma, and Docker, following clean architecture principles. It implements robust authentication and authorization mechanisms using role-based access control (RBAC). The project employs design patterns like dependency inversion, dependency injection, and factory patterns to ensure scalability and maintainability. Features include user authentication, role-based permissions, and secure access to resources.
 
-Bellow is a visual flux of the application.
-
 |          Server Structure           |
 | :---------------------------------: |
 | ![Home Page](../.github/server.png) |
