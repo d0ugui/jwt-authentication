@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { JwtPayload, verify } from "jsonwebtoken";
 import { client } from "@/lib/client";
 import { redirect } from "next/navigation";
+import { fromUnixTime } from "date-fns";
 
 export async function login(formData: FormData) {
   const response = await client.post("/sign-in", {
@@ -14,17 +15,14 @@ export async function login(formData: FormData) {
   const payload = verify(accessToken, process.env.JWT_SECRET) as JwtPayload;
 
   if (!response || !payload.exp) {
-    console.log("error");
     throw new Error("Invalid credentials");
   }
-
-  const expires = new Date(Date.now() + 10 * 1000);
 
   cookies().set({
     name: "session",
     value: accessToken,
     httpOnly: true,
-    expires: expires,
+    expires: fromUnixTime(payload.exp),
   });
 
   redirect("/dashboard");
