@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 
 import { routeAdapter } from "./adapters/routeAdapter";
 import { middlewareAdapter } from "./adapters/middlewareAdapter";
@@ -13,6 +14,7 @@ import { makeRefreshTokenController } from "../factories/makeRefreshTokenControl
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.post("/sign-up", routeAdapter(makeSignUpController()));
 app.post("/sign-in", routeAdapter(makeSignInController()));
