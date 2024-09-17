@@ -30,4 +30,12 @@ export class AuthService {
 
     return data;
   }
+
+  static async refreshToken(refreshToken: string) {
+    const { data } = await httpClient.post<ISignInResponse>("/refresh", {
+      refreshToken,
+    });
+
+    return data;
+  }
 }
