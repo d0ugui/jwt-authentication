@@ -1,4 +1,7 @@
+import { AppSidebar } from "@/components/app-sidebar";
+import { Appbar } from "@/components/appbar";
 import Button from "@/components/ui/Button";
+import { SidebarLayout } from "@/components/ui/sidebar";
 import { IUser } from "@/entities/IUser";
 import { useAuth } from "@/hooks/useAuth";
 import { UserService } from "@/services/UserService";
@@ -20,9 +23,16 @@ export function Home() {
   }, []);
 
   return (
-    <div>
-      <h1>Página após login!</h1>
-      <Button onClick={signOut}>Sair</Button>
-    </div>
+    <SidebarLayout>
+      <AppSidebar />
+
+      <div className="w-full">
+        <Appbar />
+
+        <main>
+          <Button onClick={signOut}>Sair</Button>
+        </main>
+      </div>
+    </SidebarLayout>
   );
 }
