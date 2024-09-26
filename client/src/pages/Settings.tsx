@@ -1,22 +1,8 @@
 import { AppSidebar } from "@/components/app-sidebar";
 import { Appbar } from "@/components/appbar";
 import { SidebarLayout } from "@/components/ui/sidebar";
-import { useAuth } from "@/hooks/useAuth";
-import { UserService } from "@/services/UserService";
-import { useEffect } from "react";
-import { toast } from "sonner";
 
-export function Home() {
-  const { setUser } = useAuth();
-
-  useEffect(() => {
-    UserService.getUser()
-      .then(setUser)
-      .catch(() => {
-        toast.error("Erro ao carregar os dados do usuário!");
-      });
-  }, []);
-
+export function Settings() {
   return (
     <SidebarLayout>
       <AppSidebar />
@@ -29,7 +15,7 @@ export function Home() {
             <h1 className="text-3xl font-semibold">Settings</h1>
           </div>
           <div className="mx-auto grid w-full max-w-6xl items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
-            <h1>Teste</h1>
+            <h1>Página de settings</h1>
           </div>
         </main>
       </div>

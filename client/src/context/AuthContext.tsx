@@ -1,10 +1,20 @@
 import { storageKeys } from "@/config/storageKeys";
+import { IUser } from "@/entities/IUser";
 import { AuthService } from "@/services/AuthService";
 import { httpClient } from "@/services/httpClient";
-import { createContext, useCallback, useLayoutEffect, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useLayoutEffect,
+  useState,
+} from "react";
 
 interface IAuthContextValue {
   signedIn: boolean;
+  user: IUser | null;
+  setUser: Dispatch<SetStateAction<IUser | null>>;
   signIn(email: string, password: string): Promise<void>;
   signOut(): void;
 }
@@ -12,6 +22,8 @@ interface IAuthContextValue {
 export const AuthContext = createContext({} as IAuthContextValue);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
+  const [user, setUser] = useState<IUser | null>(null);
+
   const [signedIn, setSignedIn] = useState(() => {
     return !!localStorage.getItem(storageKeys.accessToken);
   });
@@ -83,6 +95,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const value: IAuthContextValue = {
     signedIn,
+    user,
+    setUser,
     signIn,
     signOut,
   };

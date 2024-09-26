@@ -15,11 +15,6 @@ export interface PathProps {
 }
 
 export const paths = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   nav: [
     {
       title: "Home",
@@ -28,18 +23,8 @@ export const paths = {
       isActive: true,
     },
     {
-      title: "Models",
-      url: "/models",
-      icon: Bot,
-    },
-    {
       title: "Documentation",
       url: "/docs",
-      icon: BookOpen,
-    },
-    {
-      title: "API",
-      url: "/api",
       icon: Code2,
     },
     {
