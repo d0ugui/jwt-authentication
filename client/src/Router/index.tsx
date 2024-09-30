@@ -6,13 +6,18 @@ import { SignIn } from "@/pages/SignIn";
 import { SignUp } from "@/pages/SignUp";
 import { Settings } from "@/pages/Settings";
 import { Docs } from "@/pages/Docs";
+import { NotFound } from "@/pages/NotFound";
+import { NotAllowed } from "@/pages/NotAllowed";
 
 export function Router() {
   return (
     <Routes>
-      <Route element={<AuthGuard isPrivate />}>
+      <Route element={<AuthGuard allowedRoles={["USER"]} isPrivate />}>
         <Route path="/" element={<Home />} />
         <Route path="/settings" element={<Settings />} />
+      </Route>
+
+      <Route element={<AuthGuard allowedRoles={["ADMIN"]} isPrivate />}>
         <Route path="/docs" element={<Docs />} />
       </Route>
 
@@ -20,6 +25,9 @@ export function Router() {
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
       </Route>
+
+      <Route path="*" element={<NotFound />} />
+      <Route path="/not-allowed" element={<NotAllowed />} />
     </Routes>
   );
 }

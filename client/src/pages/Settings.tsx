@@ -15,7 +15,7 @@ export function Settings() {
             <h1 className="text-3xl font-semibold">Settings</h1>
           </div>
           <div className="mx-auto grid w-full max-w-6xl items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
-            <h1>Página de settings</h1>
+            <h1>Página settings</h1>
           </div>
         </main>
       </div>

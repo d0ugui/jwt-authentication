@@ -1,11 +1,4 @@
-import {
-  BookOpen,
-  Bot,
-  Code2,
-  Settings2,
-  SquareTerminal,
-  LucideIcon,
-} from "lucide-react";
+import { Code2, Settings2, SquareTerminal, LucideIcon } from "lucide-react";
 
 export interface PathProps {
   title: string;
