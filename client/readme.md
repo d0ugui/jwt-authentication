@@ -4,7 +4,7 @@ This is a completely solution to handle with Authentication and Authorization bu
 
 |               Client                |
 | :---------------------------------: |
-| ![Home Page](../.github/client.png) |
+| ![Home Page](../.github/client.gif) |
 
 ## Installation
 
