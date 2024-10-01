@@ -1,10 +1,10 @@
 services:
-  authentication-e2e:
-    container-name: authentication-e2e
+  jwt-authentication:
+    container_name: jwt-authentication
     image: bitnami/postgresql
     ports:
       - 5432:5432
     environment:
       - POSTGRESQL_USERNAME=root
       - POSTGRESQL_PASSWORD=root
-      - POSTGRESQL_DATABASE=auth-e2e
+      - POSTGRESQL_DATABASE=jwt-authentication
