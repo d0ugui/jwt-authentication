@@ -4,7 +4,7 @@ export function SignUp() {
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center">
       <div className="w-full max-w-[350px]">
-        <h1 className="text-2xl font-bold text-center">Cadastre-se!</h1>
+        <h1 className="text-2xl font-bold text-center">Register!</h1>
 
         <SignUpForm />
 
