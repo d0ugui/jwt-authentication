@@ -1,4 +1,4 @@
-# authentication-e2e
+# jwt-authentication
 
 This API is built with TypeScript, Express, Prisma, and Docker, following clean architecture principles. It implements robust authentication and authorization mechanisms using role-based access control (RBAC). The project employs design patterns like dependency inversion, dependency injection, and factory patterns to ensure scalability and maintainability. Features include user authentication, role-based permissions, and secure access to resources.
 
@@ -16,8 +16,8 @@ This API is built with TypeScript, Express, Prisma, and Docker, following clean 
 ### Clone the repository
 
 ```sh
-git clone git@github.com:d0ugui/authentication-e2e.git
-cd authentication-e2e
+git clone git@github.com:d0ugui/jwt-authentication.git
+cd jwt-authentication
 ```
 
 ### Setup server
