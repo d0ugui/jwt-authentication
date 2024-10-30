@@ -1,6 +1,4 @@
-import { AppSidebar } from "@/components/app-sidebar";
 import { Appbar } from "@/components/appbar";
-import { SidebarLayout } from "@/components/ui/sidebar";
 import { useAuth } from "@/hooks/useAuth";
 import { UserService } from "@/services/UserService";
 import { useEffect } from "react";
@@ -18,21 +16,17 @@ export function Home() {
   }, []);
 
   return (
-    <SidebarLayout>
-      <AppSidebar />
+    <div>
+      <Appbar />
 
-      <div className="w-full h-full">
-        <Appbar />
-
-        <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 bg-muted/40 p-4 md:gap-8 md:p-10">
-          <div className="mx-auto grid w-full max-w-6xl gap-2">
-            <h1 className="text-3xl font-semibold">Home</h1>
-          </div>
-          <div className="mx-auto grid w-full max-w-6xl items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
-            <h1>Página home</h1>
-          </div>
-        </main>
-      </div>
-    </SidebarLayout>
+      <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 bg-muted/40 p-4 md:gap-8 md:p-10">
+        <div className="mx-auto grid w-full max-w-6xl gap-2">
+          <h1 className="text-3xl font-semibold">Home</h1>
+        </div>
+        <div className="mx-auto grid w-full max-w-6xl items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
+          <h1>Página home</h1>
+        </div>
+      </main>
+    </div>
   );
 }

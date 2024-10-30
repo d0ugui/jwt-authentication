@@ -1,5 +1,7 @@
 import { useAuth } from "@/hooks/useAuth";
 import { Navigate, Outlet } from "react-router-dom";
+import { AppSidebar } from "@/components/app-sidebar";
+import Layout from "@/layout/Layout";
 
 interface AuthGuardProps {
   isPrivate: boolean;
@@ -22,5 +24,9 @@ export function AuthGuard({ isPrivate, allowedRoles = [] }: AuthGuardProps) {
     return <Navigate to="/sign-in" replace />;
   }
 
-  return <Outlet />;
+  return (
+    <Layout>
+      <Outlet />
+    </Layout>
+  );
 }
