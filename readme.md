@@ -4,7 +4,7 @@ This project is a full-stack application designed to manage user authentication 
 
 |                Project                 |
 | :------------------------------------: |
-| ![Home Page](../.github/structure.gif) |
+| ![Home Page](./.github/client.gif) |
 
 ## Installation
 
